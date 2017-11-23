@@ -20,7 +20,7 @@ test <- random.data[501:625,]
 #C5.0 model building
 install.packages('C50', dependencies = T)
 library(C50)
-model <- C5.0(random.data[,-1], random.data[,1])
+model <- C5.0(train[,-1], train[,1])
 summary(model)
 plot(model)
 
@@ -33,7 +33,7 @@ sum(diag(table(test[,1], model.pred)))/sum(table(test[,1], model.pred)) #accurac
 
 #Tuning:
 #Tune Model by introducing 'trials' (iterations)
-model.tuned <- C5.0(random.data[,-1], random.data[,1], trials = 25)
+model.tuned <- C5.0(train[,-1], train[,1], trials = 25)
 model.tuned
 plot(model.tuned)
 
